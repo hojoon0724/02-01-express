@@ -28,6 +28,13 @@ app.get("/greeting/:name", (req, res) => {
   res.send(`<p>Hello! ${name}</p>`);
 });
 
+app.get("/tip/:total/:tip", (req, res) => {
+  const total = Number(req.params.total);
+  const tipPercent = Number(req.params.tip);
+  let addedTotal = total * (tipPercent / 100) + total;
+  res.send(`The ${total} with a ${tipPercent}% tip is ${addedTotal}`);
+});
+
 // -----------------------------------------------------
 // Listener
 // -----------------------------------------------------
